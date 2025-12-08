@@ -1,0 +1,89 @@
+
+// ╭╮╱╱╭┳━━┳━━━┳━━━━┳╮╱╭┳━━━┳╮╱╭╮╱╱╭┳━━━┳━╮╭━╮
+// ┃╰╮╭╯┣┫┣┫╭━╮┃╭╮╭╮┃┃╱┃┃╭━╮┃┃╱┃╰╮╭╯┃╭━━┻╮╰╯╭╯
+// ╰╮┃┃╭╯┃┃┃╰━╯┣╯┃┃╰┫┃╱┃┃┃╱┃┃┃╱╰╮┃┃╭┫╰━━╮╰╮╭╯
+// ╱┃╰╯┃╱┃┃┃╭╮╭╯╱┃┃╱┃┃╱┃┃╰━╯┃┃╱╭┫╰╯┃┃╭━━╯╭╯╰╮
+// ╱╰╮╭╯╭┫┣┫┃┃╰╮╱┃┃╱┃╰━╯┃╭━╮┃╰━╯┣╮╭╯┃╰━━┳╯╭╮╰╮
+// ╱╱╰╯╱╰━━┻╯╰━╯╱╰╯╱╰━━━┻╯╱╰┻━━━╯╰╯╱╰━━━┻━╯╰━╯╯
+
+
+setCpm(140/4)
+
+_$: s("i_like_it_rough:1") 
+  .loopAt(4)  .gain(1.5) 
+  .room(1) 
+  .hpf(slider(1505,0,5000)) .lpf(slider(5000,0,5000))
+_$: s("i_like_it_rough:4") .loopAt(4) .gain(1.5) .room(0.6) .hpf(slider(1145,0,5000)) .lpf(slider(5000,0,5000))
+
+
+_$: s("bd!4")
+    .bank("rolandtr909")
+    .gain(1.7)
+    ._scope()
+
+
+
+_$: s("bd@2 cp@2 - bd cp -")
+  .gain(1.5)
+  
+
+_$: s("bd bd cp cp - bd cp -")
+  .gain(1.7)
+
+_$:s("cp*2")
+  .bank("rolandtr909")
+  .gain(2)
+
+_$:s("cp sd cp sd")
+  .bank("RolandTR909")
+  .cut(1)
+  .gain(1.8)
+
+_$: s("bd!4") .gain(2)
+  .bank("rolandtr909")
+  .release(0.2)
+  ._scope()
+
+_$: note("db3")
+  .transpose(2)
+  .s("i_like_it_rough:1")
+  .slice(16, "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15")
+  .legato(1)
+  .gain(2)
+  
+
+_$: note("<[~ c#3 e3 c#3 f#@2 e3 d#3] [~ b2 d#3 b2 e3@2 d#3 c#3] [~ a2 c#3 a2 e3@2 d#3 c#3] [~ g#2 c#3 g#2 e3@2 f#3 g#3] >").transpose(2) 
+  .s("bytebeat") 
+  .gain(2) 
+  .release(0.2) 
+  //.attack(0.05)
+  .lpf(slider(5000,200,5000))
+  .delay(0.1)
+  .chorus(0.5)
+  //.pan(rand)
+  .hpf(slider(220,0,400,10))
+  .room(0.2)
+  ._pianoroll()
+
+
+
+_$: note("db3 e3 ab3 db4 e5 db4 ab3 e3").transpose(2) .slow(0.5) .s("saw") .gain(1.8) .release(0.2) //.pan(rand)
+  .hpf(slider(870,0,5000,10))
+  .lpf(slider(5000,0,5000,10))
+  .room(0.2)
+  ._pianoroll()
+
+
+
+_$: note("db*4 [e4*3@1.5 e4*3] b3*4 [bb3*3@1.5 bb3*3]").transpose(2) 
+  .slow(4) .s("supersaw") .gain(1.8) .release(0.2) 
+  //.pan(rand)
+  .hpf(slider(170,0, 400,10))
+  .lpf(slider(400,0,400,10))
+  .room(0.2)
+  //._pianoroll()
+
+
+_$: note("db3 b2 bb2 a2").transpose(2) .s("supersaw") 
+  .slow(4). lpf(1500) .release(0.5) .gain(2) .lpf(slider(5000, 0, 5000, 10)) 
+  .hpf(slider(1680,0,5000))
